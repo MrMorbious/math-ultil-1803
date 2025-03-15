@@ -13,23 +13,16 @@ public class MathUtility {
     // quy ước hàm này chỉ tính n từ 0 ... 20
     //code hàm th cx đồng thời phải kiểm thử hàm, muốn kiểm thử phải có test case !!!!
 
+    // chuyển sang tính giai thừa bằng đệ quy
     public static long getFactorial (int n) {
         if (n < 0 || n > 20) {
             //return -1;
             throw new IllegalArgumentException("Invalid n , n between 0 and 20");
         }
-        if (n == 0) {
+        if (n == 0 || n == 1) {
             return 1; //early return, thoát sớm nếu có thể
         }
-        // khỏi viết else cho code đẹp
-        // n bắt đầu từ 1 ...
-        //thuật toán con heo đất, nhân dồn cộng dồn
-        long result = 1;
-        for (int i = 1; i <= n; i++) {
-            result *= i; // i bị nhân dồn vào result = result * i
-        }
-
-        return result;
+        return n * getFactorial(n - 1);
     }
 
     //> TEST CASE #1
